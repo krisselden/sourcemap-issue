@@ -1,0 +1,14 @@
+{
+  "version": 3,
+  "file": "wrapped.js",
+  "sources": [
+    "original.js"
+  ],
+  "sourcesContent": [
+    "\ndefine(\"hello\", [\"exports\"], function (exports) {\n  !function () {\n    var hello = function hello() {\n      !function () {\n        console.log('hello');\n      }();\n    };\n    exports.default = hello;\n  }();\n});\n"
+  ],
+  "names": [
+    "hello"
+  ],
+  "mappings": "AAAA;AACA,MAAM,CAAC,OAAO,EAAE,CAAC,SAAS,CAAC,EAAE,CAAA,UAAU,OAAO,EAAE;EAC9C,CAAC,CAAA,YAAY;IACX,IAAIA,CAAK,GAAG,SAASA,CAAK,GAAG;MAC3B,CAAC,CAAA,YAAY;QACX,OAAO,CAAC,GAAG,CAAC,OAAO,CAAC,CAAC;OACtB,CAAA,EAAE,CAAC;KACL,CAAC;IACF,OAAO,CAAC,OAAO,GAAGA,CAAK,CAAC;GACzB,CAAA,EAAE,CAAC;CACL,CAAA,CAAC,CAAC;"
+}

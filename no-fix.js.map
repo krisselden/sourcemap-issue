@@ -1,0 +1,12 @@
+{
+  "version": 3,
+  "file": "wrapped.js",
+  "sources": [
+    "original.js"
+  ],
+  "sourcesContent": [
+    "\ndefine(\"hello\", [\"exports\"], function (exports) {\n  !function () {\n    var hello = function hello() {\n      !function () {\n        console.log('hello');\n      }();\n    };\n    exports.default = hello;\n  }();\n});\n"
+  ],
+  "names": [],
+  "mappings": "AAAA;6BAC6B,CAAA;GAC1B,CAAA;;OAEI,CAAA;;OAEA,CAAA;;;GAGJ,CAAA;CACF,CAAA;"
+}

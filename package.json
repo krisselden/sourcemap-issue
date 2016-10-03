@@ -1,0 +1,21 @@
+{
+  "name": "sourcemap-issue",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Kris Selden",
+  "license": "MIT",
+  "dependencies": {
+    "acorn": "^4.0.3",
+    "estree-walker": "^0.3.0",
+    "magic-string": "^0.16.0",
+    "optimize-js": "github:krisselden/optimize-js#fix-source-map",
+    "sorcery": "^0.10.0",
+    "source-map-url": "^0.4.0",
+    "sourcemap-validator": "^1.0.4",
+    "uglify-js": "^2.7.3"
+  }
+}
