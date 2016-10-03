@@ -14,7 +14,7 @@ let optimized = optimize(minified, 'jquery.slim.opt.js', minified.file);
 let map = resolveChain(original, minified, optimized);
 
 fs.writeFileSync(optimized.file, optimized.code + '//# sourceMappingURL=' + optimized.file + '.map');
-fs.writeFileSync(optimized.file + '.map', JSON.stringify(optimized.map, null, 2));
+fs.writeFileSync(optimized.file + '.map', JSON.stringify(map, null, 2));
 
 function resolveChain(original, minified, optimized) {
   let content = Object.create(null);
