@@ -9,7 +9,7 @@ const BASE64 = 'base64,';
 
 let original = readSrc('bower_components/jquery/dist', 'jquery.slim.js');
 let minified = readSrc('bower_components/jquery/dist', 'jquery.slim.min.js', 'jquery.slim.min.map');
-let optimized = optimize(minified, 'jquery.slim.opt.js', original.file);
+let optimized = optimize(minified, 'jquery.slim.opt.js', minified.file);
 
 let map = resolveChain(original, minified, optimized);
 
@@ -32,8 +32,11 @@ function resolveChain(original, minified, optimized) {
   });
 
   validate(minified.code, JSON.stringify(minified.map), content);
-  validate(optimized.code, JSON.stringify(resolvedMap), content);
-
+  try {
+    validate(optimized.code, JSON.stringify(resolvedMap), content);
+  } catch (e) {
+    console.error(e);
+  }
   return optimized;
 }
 
