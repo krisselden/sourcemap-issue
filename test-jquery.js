@@ -37,7 +37,7 @@ function resolveChain(original, minified, optimized) {
   } catch (e) {
     console.error(e);
   }
-  return optimized;
+  return resolvedMap;
 }
 
 function optimize(minified, file, source) {
