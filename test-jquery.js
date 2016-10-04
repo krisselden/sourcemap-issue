@@ -9,12 +9,44 @@ const BASE64 = 'base64,';
 
 let original = readSrc('bower_components/jquery/dist', 'jquery.slim.js');
 let minified = readSrc('bower_components/jquery/dist', 'jquery.slim.min.js', 'jquery.slim.min.map');
-let optimized = optimize(minified, 'jquery.slim.opt.js', minified.file);
 
+let optimized = optimize(minified, 'jquery.slim.opt.js', minified.file);
 let map = resolveChain(original, minified, optimized);
 
 fs.writeFileSync(optimized.file, optimized.code + '//# sourceMappingURL=' + optimized.file + '.map');
 fs.writeFileSync(optimized.file + '.map', JSON.stringify(map, null, 2));
+
+
+let uglified = minify(original, 'jquery.slim.min.js');
+optimized = optimize(uglified, 'jquery.slim.uglify-opt.js', uglified.file);
+map = resolveChain(original, uglified, optimized);
+
+fs.writeFileSync(optimized.file, optimized.code + '//# sourceMappingURL=' + optimized.file + '.map');
+fs.writeFileSync(optimized.file + '.map', JSON.stringify(map, null, 2));
+
+function minify(source, file) {
+  let UglifyJS = require('uglify-js');
+
+  let ast = UglifyJS.parse(source.code, { filename: source.file });
+  ast.figure_out_scope();
+
+  let compressor = UglifyJS.Compressor();
+  ast = ast.transform(compressor);
+
+  ast.figure_out_scope();
+  ast.compute_char_frequency();
+  ast.mangle_names();
+
+  let source_map = UglifyJS.SourceMap();
+  let stream = UglifyJS.OutputStream({
+    source_map
+  });
+  ast.print(stream);
+
+  let code = stream.toString();
+  let map = source_map.get().toJSON();
+  return { code, file, map };
+}
 
 function resolveChain(original, minified, optimized) {
   let content = Object.create(null);
