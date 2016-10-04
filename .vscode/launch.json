@@ -20,6 +20,25 @@
       "console": "internalConsole",
       "sourceMaps": false,
       "outDir": null
+    },{
+      "name": "Ember",
+      "type": "node",
+      "request": "launch",
+      "program": "${workspaceRoot}/test-ember.js",
+      "stopOnEntry": false,
+      "args": [],
+      "cwd": "${workspaceRoot}",
+      "preLaunchTask": null,
+      "runtimeExecutable": null,
+      "runtimeArgs": [
+        "--nolazy"
+      ],
+      "env": {
+        "NODE_ENV": "development"
+      },
+      "console": "internalConsole",
+      "sourceMaps": false,
+      "outDir": null
     }
   ]
 }
